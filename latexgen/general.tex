@@ -1,0 +1,221 @@
+% ==========================
+% UNIFIED TEX PREAMBLE
+% ==========================
+
+% ----------------------
+% Coding and Language
+% ----------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[main={lang}]{babel}
+
+% ----------------------
+% Typography and mathematics
+% ----------------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{mathpartir}
+{fontpkg}
+
+% --------------------
+% Symbol and utility packages
+% --------------------
+\usepackage{cancel}
+\usepackage{textcomp}
+\usepackage[mathscr]{euscript}
+\usepackage[nointegrals]{wasysym}
+
+% --------------------
+% Extras
+% --------------------
+\usepackage{physics}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{calc}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{fix-cm}
+\usepackage{chemfig}
+\usepackage{mhchem}
+\usepackage{esvect}
+\usepackage{nicematrix}
+\usepackage{CJKutf8}
+\usepackage{esint}
+\usepackage{siunitx}
+\usepackage{pgfplots}
+\usepackage{circuitikz}
+\usepackage{wrapfig}
+% ----------------------
+% Utilities and formatation
+% ----------------------
+\usepackage{mathrsfs}
+\usepackage{indentfirst}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{tabularx}
+\usepackage{cancel}
+\usepackage{comment}
+\usepackage{csquotes}
+\usepackage{hyphenat}
+\usepackage{ellipsis}
+\usepackage{paracol}
+\usepackage[T1]{tipa}
+\usepackage{xcolor}
+\usepackage{fullwidth}
+% ----------------------
+% Logic and mathematics
+% ----------------------
+\usepackage{fitch}
+\usepackage{proof}
+
+\renewcommand*\land{\mathrel{\&}}
+\newcommand*\Implies{\mathrel{\Rightarrow}}
+\renewcommand*\implies{\mathrel{\rightarrow}}
+\newcommand*\Iff{\mathrel{\Leftrightarrow}}
+\renewcommand*\iff{\mathrel{\leftrightarrow}}
+\newcommand*\ex{\mathrel{\downarrow}}
+
+% ----------------------
+% Customized math operators
+% ----------------------
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\mmc}{mmc}
+\DeclareMathOperator{\mdc}{mdc}
+\DeclareMathOperator{\ifc}{if}
+\let\Re\relax
+\DeclareMathOperator{\Re}{Re}
+\let\Im\relax
+\DeclareMathOperator{\Im}{Im}
+
+\renewcommand*\d{\mathrm{d}}
+
+% Other math keybinds
+\newcommand*{\mbb}[1]{\mathbb{#1}}
+\newcommand*{\mcl}[1]{\mathcal{#1}}
+\newcommand*{\mfr}[1]{\mathfrak{#1}}
+\newcommand*{\func}[3]{#1:#2\to#3}
+\newcommand{\vfunc}[5]{\func{#1}{#2}{#3},\quad#4\longmapsto#5}
+\newcommand*{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand*{\ceil}[1]{\left\lceil#1\right\rceil}
+
+
+\newcommand*\df{\mathrm{df}}
+
+\newcommand*\N{\mathbb{N}}
+\newcommand*\Z{\mathbb{Z}}
+\newcommand*\Q{\mathbb{Q}}
+\newcommand*\R{\mathbb{R}}
+\newcommand*\C{\mathbb{C}}
+\newcommand*\F{\mathbb{F}}
+
+\renewcommand*\O{\mathcal{O}}
+\renewcommand*\emptyset{\varnothing}
+
+% Some standard theorem definitions
+\newtheorem{Theorem}{Theorem}
+\newtheorem{Proposition}{Theorem}
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Corollary}[Theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{Definition}[Theorem]{Definition}
+
+
+% ----------------------
+% Always use math display
+% ----------------------
+\everymath{\displaystyle}
+
+% ----------------------
+% Configuração dos links
+% ----------------------
+\hypersetup{
+    bookmarksnumbered=true,
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue,
+}
+
+% ----------------------
+% Unicode Symbols (♠ ♣ ♥ ♦)
+% ----------------------
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\spades}{\mathalpha}{extraup}{81}
+\DeclareMathSymbol{\clubs}{\mathalpha}{extraup}{84}
+\DeclareMathSymbol{\hearts}{\mathalpha}{extraup}{86}
+\DeclareMathSymbol{\diamonds}{\mathalpha}{extraup}{87}
+
+% ----------------------
+% Correção do comportamento do \pmod*
+% ----------------------
+\makeatletter
+\let\@@pmod\pmod
+\DeclareRobustCommand{\pmod}{\@ifstar\@pmods\@@pmod}
+\def\@pmods#1{\mkern4mu({\operator@font mod}\mkern 6mu#1)}
+\makeatother
+
+% ----------------------
+% Melhor Overline (\widebar)
+% ----------------------
+\makeatletter
+\let\save@mathaccent\mathaccent
+\newcommand*\if@single[3]{%
+  \setbox0\hbox{${\mathaccent"0362{#1}}^H$}%
+  \setbox2\hbox{${\mathaccent"0362{\kern0pt#1}}^H$}%
+  \ifdim\ht0=\ht2 #3\else #2\fi
+}
+\newcommand*\rel@kern[1]{\kern#1\dimexpr\macc@kerna}
+\newcommand*\wideaccent[2]{\@ifnextchar^{{\wide@accent{#1}{#2}{0}}}{\wide@accent{#1}{#2}{1}}}
+\newcommand*\wide@accent[3]{\if@single{#2}{\wide@accent@{#1}{#2}{#3}{1}}{\wide@accent@{#1}{#2}{#3}{2}}}
+\newcommand*\wide@accent@[4]{%
+  \begingroup
+  \def\mathaccent##1##2{%
+    \let\mathaccent\save@mathaccent
+    \if#42 \let\macc@nucleus\first@char \fi
+    \setbox\z@\hbox{$\macc@style{\macc@nucleus}_{}$}%
+    \setbox\tw@\hbox{$\macc@style{\macc@nucleus}{}_{}$}%
+    \dimen@\wd\tw@
+    \advance\dimen@-\wd\z@
+    \divide\dimen@ 3
+    \@tempdima\wd\tw@
+    \advance\@tempdima-\scriptspace
+    \divide\@tempdima 10
+    \advance\dimen@-\@tempdima
+    \ifdim\dimen@>\z@ \dimen@0pt\fi
+    \rel@kern{0.6}\kern-\dimen@
+    \if#41
+      #1{\rel@kern{-0.6}\kern\dimen@\macc@nucleus\rel@kern{0.4}\kern\dimen@}%
+      \advance\dimen@0.4\dimexpr\macc@kerna
+      \let\final@kern#3%
+      \ifdim\dimen@<\z@ \let\final@kern1\fi
+      \if\final@kern1 \kern-\dimen@\fi
+    \else
+      #1{\rel@kern{-0.6}\kern\dimen@#2}%
+    \fi
+  }%
+  \macc@depth\@ne
+  \let\math@bgroup\@empty \let\math@egroup\macc@set@skewchar
+  \mathsurround\z@ \frozen@everymath{\mathgroup\macc@group\relax}%
+  \macc@set@skewchar\relax
+  \let\mathaccentV\macc@nested@a
+  \if#41
+    \macc@nested@a\relax111{#2}%
+  \else
+    \def\gobble@till@marker##1\endmarker{}%
+    \futurelet\first@char\gobble@till@marker#2\endmarker
+    \ifcat\noexpand\first@char A\else
+      \def\first@char{}%
+    \fi
+    \macc@nested@a\relax111{\first@char}%
+  \fi
+  \endgroup
+}
+\newcommand\widebar{\wideaccent\overline}
+\makeatother
+

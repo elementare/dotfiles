@@ -1,0 +1,36 @@
+\documentclass[12pt, a4paper, twocolumn]{article}
+{general}
+\input{color_theme.tex}
+
+\title{{titulo}}
+\author{{autor} \\ \textit{{instituicao}}}
+\date{{data}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\input{text/abstract.tex}
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+\input{text/intro.tex}
+
+\section{Methodology}
+\input{text/methodology.tex}
+
+\section{Results and Discussion}
+\input{text/results.tex}
+
+\section{Conclusion}
+\input{text/conclusion.tex}
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}
+
